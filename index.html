@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Experience Survey</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <button type="button" id="themeToggle" class="secondary">
+        🌙 Dark mode
+      </button>
+    </div>
+
+    <header class="header">
+      <span class="eyebrow">YOUR FEEDBACK MATTERS</span>
+      <h1>Learning Experience Survey</h1>
+      <p id="description">
+        Help us create a better learning experience.
+        Tell us what you enjoy and what we can improve.
+      </p>
+    </header>
+
+    <section class="card">
+      <div class="progress-info">
+        <span>Your progress</span>
+        <span id="progressText">0% complete</span>
+      </div>
+
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Survey progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="progressTrack"
+      >
+        <div id="progressBar"></div>
+      </div>
+
+      <div id="successMessage" class="success" role="status" hidden>
+        <h2>🎉 Survey submitted!</h2>
+        <p>Thank you for helping us improve learning.</p>
+        <ul id="summary"></ul>
+        <button type="button" id="newSurvey">New survey</button>
+      </div>
+
+      <form id="surveyForm" novalidate>
+        <div class="form-group">
+          <label for="name">Full name *</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            minlength="2"
+            maxlength="100"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required
+          >
+          <small class="error" id="nameError" hidden></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address *</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            maxlength="254"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          >
+          <small class="error" id="emailError" hidden></small>
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age (optional)</label>
+          <input
+            id="age"
+            name="age"
+            type="number"
+            min="10"
+            max="100"
+            step="1"
+            placeholder="10–100"
+          >
+          <small class="error" id="ageError" hidden></small>
+        </div>
+
+        <div class="form-group">
+          <label for="role">Which best describes you? *</label>
+          <select id="role" name="role" required>
+            <option value="">Select your current role</option>
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Professional">Working professional</option>
+            <option value="Self-learner">Self-learner</option>
+            <option value="Other">Other</option>
+          </select>
+          <small class="error" id="roleError" hidden></small>
+        </div>
+
+        <fieldset>
+          <legend>Rate your learning experience *</legend>
+
+          <label class="choice">
+            <input type="radio" name="rating" value="Excellent" required>
+            Excellent
+          </label>
+          <label class="choice">
+            <input type="radio" name="rating" value="Good">
+            Good
+          </label>
+          <label class="choice">
+            <input type="radio" name="rating" value="Average">
+            Average
+          </label>
+          <label class="choice">
+            <input type="radio" name="rating" value="Needs improvement">
+            Needs improvement
+          </label>
+
+          <small class="error" id="ratingError" hidden></small>
+        </fieldset>
+
+        <fieldset>
+          <legend>Which topics interest you?</legend>
+          <p class="hint">Select all that apply.</p>
+
+          <label class="choice">
+            <input type="checkbox" name="topics" value="HTML">
+            HTML
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="topics" value="CSS">
+            CSS and design
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="topics" value="JavaScript">
+            JavaScript
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="topics" value="Accessibility">
+            Web accessibility
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="topics" value="Responsive design">
+            Responsive web design
+          </label>
+
+          <p class="topic-count" id="topicCount" aria-live="polite">
+            0 topics selected
+          </p>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="comments">Additional comments</label>
+          <textarea
+            id="comments"
+            name="comments"
+            maxlength="2000"
+            placeholder="Share your ideas or suggestions..."
+          ></textarea>
+          <p class="hint"><span id="charCount">0</span>/2000 characters</p>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="clearDraft" class="secondary">
+            Clear form
+          </button>
+          <button type="submit" id="submit">Submit survey →</button>
+        </div>
+
+        <p id="saveStatus" class="hint" role="status">
+          Your draft is saved locally in this browser.
+        </p>
+      </form>
+    </section>
+
+    <footer>
+      Thank you for helping us make learning better.
+    </footer>
+  </main>
+</body>
+</html>
